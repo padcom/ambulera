@@ -1,0 +1,9 @@
+{
+  "name": "ambulera",
+  "version": "0.0.0",
+  "description": "Ambulera ('Umbrella' in Chewa language) is a set of utilities helping organize an Electron application.",
+  "main": "index.js",
+  "keywords": ["electron"],
+  "author": "Matthias Hryniszak",
+  "license": "Apache-2.0"
+}
