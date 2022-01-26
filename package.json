@@ -2,10 +2,19 @@
   "name": "ambulera",
   "version": "0.0.1",
   "description": "Ambulera ('Umbrella' in Chewa language) is a set of utilities helping organize an Electron application.",
-  "main": "index.js",
-  "keywords": ["electron"],
+  "main": "main.js",
+  "keywords": [
+    "electron",
+    "ambulera"
+  ],
   "author": "Matthias Hryniszak",
   "license": "Apache-2.0",
+  "scripts": {
+    "start": "electron .",
+    "build": "vite build && electron-builder",
+    "clean": "rm -rf dist",
+    "postinstall": "electron-builder install-app-deps"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/padcom/ambulera"
@@ -17,5 +26,50 @@
   "funding": {
     "type": "patreon",
     "url": "https://www.patreon.com/padcom"
+  },
+  "dependencies": {
+    "electron-is-dev": "2.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.1.0",
+    "acorn-private-methods": "^1.0.0",
+    "electron": "16.0.7",
+    "electron-builder": "^22.14.5",
+    "sass": "^1.49.0",
+    "scss": "^0.2.4",
+    "vite": "^2.1.4",
+    "vue": "^3.2.29",
+    "vue-router": "^3.5.3"
+  },
+  "build": {
+    "files": [
+      "./main.js",
+      "./preload.js",
+      "./lib/*",
+      "node_modules/**/*",
+      "build/icons/128x128.png",
+      "build/icons/512x512.png",
+      {
+        "from": "dist/app",
+        "to": "./",
+        "filter": "**/*"
+      }
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        "msi",
+        "zip"
+      ]
+    }
   }
 }
